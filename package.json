@@ -1,6 +1,6 @@
 {
   "name": "@kiipo/action_release_it",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,7 @@
     },
     "npm": {
       "publish": false
-    }, 
+    },
     "git": {
       "addUntrackedFiles": true,
       "commitMessage": "[release] v${version.split('.')[2]}",

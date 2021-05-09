@@ -1,0 +1,31 @@
+name: kiipo_action_release_it
+description: run release-it and push version bump to release and develop branches
+inputs:
+  github_token: 
+    required: true
+  repository_name:
+    required: true
+runs: 
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v2
+      with: 
+        token: ${{ inputs.github_token}}
+    - name: setup-node v15
+      uses: actions/setup-node@v2
+      with:
+        node-version: 15
+    - run: git config user.name "kiipobot"
+    - run: git config user.email "superuser@kiipo.com"
+    - run: npm ci --ignore-scripts
+    - run: npm run lint
+    - run: npm run test
+    - run: npm run release:ci 
+    - run: git push https://kiipobot:${{ inputs.github_token }}@github.com/physioq/${{ inputs.repository_name }} release --force --follow-tags
+    - uses: actions/checkout@v2
+      with: 
+        token: ${{ inputs.github_token }}
+        ref: develop 
+    - run: git fetch -v
+    - run: git rebase origin/release
+    - run: git push https://kiipobot:${{ inputs.github_token }}@github.com/physioq/${{ inputs.repository_name }} develop --force --follow-tags

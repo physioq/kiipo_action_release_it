@@ -1,0 +1,39 @@
+{
+  "name": "@kiipo/action_release_it",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "echo 'no test needed'",
+    "test": "echo 'no test needed'",
+    "release": "release-it",
+    "release:ci": "release-it --ci"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/physioq/kiipo_action_release_it.git"
+  },
+  "release-it": {
+    "hooks": {
+      "after:release": "echo Now dontya forget to push!!!"
+    },
+    "npm": {
+      "publish": false
+    }, 
+    "git": {
+      "addUntrackedFiles": true,
+      "commitMessage": "[release] v${version.split('.')[2]}",
+      "tagName": "v${version.split('.')[2]}",
+      "tagAnnotation": "[release] v${version.split('.')[2]}",
+      "requireUpstream": false,
+      "push": false
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/physioq/kiipo_action_release_it/issues"
+  },
+  "homepage": "https://github.com/physioq/kiipo_action_release_it#readme",
+  "devDependencies": {
+    "release-it": "^14.6.2"
+  }
+}

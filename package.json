@@ -1,7 +1,7 @@
 {
   "name": "@kiipo/action_release_it",
-  "version": "0.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "an action to run release-it and sync release and develop branch",
   "main": "index.js",
   "scripts": {
     "lint": "echo 'no test needed'",
@@ -15,11 +15,11 @@
   },
   "release-it": {
     "hooks": {
-      "after:release": "echo Now dontya forget to push!!!"
+      "after:release": "echo now dontya forget to push!!!"
     },
     "npm": {
       "publish": false
-    }, 
+    },
     "git": {
       "addUntrackedFiles": true,
       "commitMessage": "[release] v${version.split('.')[2]}",

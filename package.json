@@ -15,7 +15,7 @@
   },
   "release-it": {
     "hooks": {
-      "after:release": "echo Now dontya forget to push!!!"
+      "after:release": "echo now dontya forget to push!!!"
     },
     "npm": {
       "publish": false

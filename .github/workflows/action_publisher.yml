@@ -1,0 +1,28 @@
+name: action_tester
+on: 
+  workflow_dispatch: 
+  push:
+    branches: 
+      - develop
+    tags-ignore:
+      - v*
+jobs:
+  action_tester_main_job:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: DISABLE_WORKFLOW
+        uses: physioq/kiipo_action_toggle_workflow@v1
+        with: 
+          enable_or_disable: 'disable'
+          workflow_filename: 'action_tester.yml'
+          github_token: ${{ secrets.KIIPO_BOT_GITHUB_AUTOMATION_TOKEN }}
+      - uses: physioq/kiipo_action_release_it@v1
+        with: 
+          github_token: ${{ secrets.KIIPO_BOT_GITHUB_AUTOMATION_TOKEN }}
+      - name: ENABLE_WORKFLOW
+        uses: physioq/kiipo_action_toggle_workflow@v1
+        with: 
+          enable_or_disable: 'enable'
+          workflow_filename: 'action_tester.yml'
+          github_token: ${{ secrets.KIIPO_BOT_GITHUB_AUTOMATION_TOKEN}}
+

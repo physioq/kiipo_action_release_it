@@ -8,24 +8,27 @@ inputs:
 runs: 
   using: "composite"
   steps:
-    - uses: actions/checkout@v2
-      with: 
-        token: ${{ inputs.github_token}}
-    - name: setup-node v15
-      uses: actions/setup-node@v2
-      with:
-        node-version: 15
     - run: git config user.name "kiipobot"
+      shell: bash
     - run: git config user.email "superuser@kiipo.com"
+      shell: bash
+    - run: git checkout release
+      shell: bash
     - run: npm ci --ignore-scripts
+      shell: bash
     - run: npm run lint
+      shell: bash
     - run: npm run test
+      shell: bash
     - run: npm run release:ci 
+      shell: bash
     - run: git push https://kiipobot:${{ inputs.github_token }}@github.com/physioq/${{ inputs.repository_name }} release --force --follow-tags
-    - uses: actions/checkout@v2
-      with: 
-        token: ${{ inputs.github_token }}
-        ref: develop 
+      shell: bash
+    - run: git checkout develop
+      shell: bash
     - run: git fetch -v
+      shell: bash
     - run: git rebase origin/release
+      shell: bash
     - run: git push https://kiipobot:${{ inputs.github_token }}@github.com/physioq/${{ inputs.repository_name }} develop --force --follow-tags
+      shell: bash

@@ -28,7 +28,7 @@ runs:
       shell: bash
     - run: git fetch -v
       shell: bash
-    - run: git merge origin/release
+    - run: git merge origin/release --no-edit --continue
       shell: bash
     - run: git push https://kiipobot:${{ inputs.github_token }}@github.com/physioq/${{ inputs.repository_name }} develop --force --follow-tags
       shell: bash

@@ -1,7 +1,7 @@
 {
   "name": "@kiipo/action_release_it",
   "version": "0.0.13",
-  "description": "",
+  "description": "an action to run release-it and sync release and develop branch",
   "main": "index.js",
   "scripts": {
     "lint": "echo 'no test needed'",

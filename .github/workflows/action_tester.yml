@@ -10,6 +10,9 @@ jobs:
   action_tester_main_job:
     runs-on: ubuntu-latest
     steps: 
+      - uses: actions/checkout@v2
+        with: 
+          token: ${{ secrets.KIIPO_BOT_GITHUB_AUTOMATION_TOKEN }}
       - name: DISABLE_WORKFLOW
         uses: physioq/kiipo_action_toggle_workflow@v1
         with: 

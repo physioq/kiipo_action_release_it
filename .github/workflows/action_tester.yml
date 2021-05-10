@@ -19,7 +19,7 @@ jobs:
           enable_or_disable: 'disable'
           workflow_filename: 'action_tester.yml'
           github_token: ${{ secrets.KIIPO_BOT_GITHUB_AUTOMATION_TOKEN }}
-      - uses: physioq/kiipo_action_release_it@v2
+      - uses: physioq/kiipo_action_release_it@v8
         with: 
           github_token: ${{ secrets.KIIPO_BOT_GITHUB_AUTOMATION_TOKEN }}
           repository_name: kiipo_action_release_it

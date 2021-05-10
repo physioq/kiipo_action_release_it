@@ -3,7 +3,7 @@ on:
   workflow_dispatch: 
   push:
     branches: 
-      - develop
+      - release
     tags-ignore:
       - v*
 jobs:
@@ -23,6 +23,7 @@ jobs:
         with: 
           github_token: ${{ secrets.KIIPO_BOT_GITHUB_AUTOMATION_TOKEN }}
       - name: ENABLE_WORKFLOW
+        if: ${{ always() }}
         uses: physioq/kiipo_action_toggle_workflow@v1
         with: 
           enable_or_disable: 'enable'

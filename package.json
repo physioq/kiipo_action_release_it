@@ -1,6 +1,6 @@
 {
   "name": "@kiipo/action_release_it",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "an action to run release-it and sync release and develop branch",
   "main": "index.js",
   "scripts": {
